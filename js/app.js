@@ -1,11 +1,11 @@
 'use strict';
 
 function Horns(horns) {
-    this.url = horns.image_url;
-    this.name = horns.title;
-    this.desc = horns.description;
-    this.keyword = horns.keyword;
-    this.num = horns.horns;
+  this.url = horns.image_url;
+  this.name = horns.title;
+  this.desc = horns.description;
+  this.keyword = horns.keyword;
+  this.num = horns.horns;
 }
 
 Horns.allHorns = [];
@@ -46,6 +46,7 @@ Horns.readJson = () => {
         })
         .then(Horns.loadHorns);
 }
+
 
 Horns.loadHorns = () => {
     Horns.allHorns.forEach(horns => horns.render());
