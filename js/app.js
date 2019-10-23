@@ -1,9 +1,5 @@
 'use strict';
 
-// step 1: add all keywords to drop down menu
-// step 2: make sure keywords dont repeat
-// step 3: filter images by keyword
-
 function Horns(horns) {
     this.url = horns.image_url;
     this.name = horns.title;
@@ -56,3 +52,13 @@ Horns.loadHorns = () => {
 }
 
 $(() => Horns.readJson());
+
+$('#sorting').on('change', function() {
+    let selected = $(this).val();
+    $('div').hide();
+    $(`div[class="${selected}"]`).show();
+
+    if(selected === 'default'){
+        $('div').show();
+    }
+})
