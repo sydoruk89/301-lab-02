@@ -8,55 +8,58 @@ function Horns(horns) {
   this.num = horns.horns;
 }
 
-Horns.all = [];
+Horns.allHorns = [];
+let dropdown = [];
+
+Horns.prototype.options = function() {
+    
+    $('select').append('option')
+}
 
 Horns.prototype.render = function() {
-  $('main').append('<div class="clone"></div>');
-  let hornClone = $('div[class="clone"]');
-  let hornHtml = $('#photo-template').html();
-  hornClone.html(hornHtml);
-  hornClone.find('h2').text(this.name);
-  hornClone.find('img').attr('src', this.url);
-  hornClone.find('p').text(this.desc);
-  hornClone.removeClass('clone');
-  hornClone.attr('class', this.keyword);
+    $('main').append('<div class="clone"></div>');
+    let hornClone = $('div[class="clone"]');
+    let hornHtml = $('#photo-template').html();
+    hornClone.html(hornHtml);
+    hornClone.find('h2').text(this.name);
+    hornClone.find('img').attr('src', this.url);
+    hornClone.find('p').text(this.desc);
+    hornClone.removeClass('clone');
+    hornClone.attr('class', this.keyword);
+    if(dropdown.includes(this.keyword) === false){
+        dropdown.push(this.keyword);
+    }
+    if(dropdown.length === 11){
+        dropdown.forEach(item =>{
+            $('select').append(`<option value="${item}">${item}</option>`);
+
+        })
+    }
 }
 
 Horns.readJson = () => {
-  $.get('data/page-1.json', 'json')
-    .then(data => {
-      data.forEach(item => {
-        Horns.all.push(new Horns(item));
-      });
-    })
-    .then(() => {
-      Horns.loadHorns();
-      displayPage();
-    });
+    $.get('data/page-1.json', 'json')
+        .then(data => {
+            data.forEach(item => {
+                Horns.allHorns.push(new Horns(item));
+            });
+        })
+        .then(Horns.loadHorns);
 }
 
 
 Horns.loadHorns = () => {
-  Horns.all.forEach(horns => horns.render());
+    Horns.allHorns.forEach(horns => horns.render());
 }
 
 $(() => Horns.readJson());
 
+$('#sorting').on('change', function() {
+    let selected = $(this).val();
+    $('div').hide();
+    $(`div[class="${selected}"]`).show();
 
-
-
-// Dog.readJson = () => {
-//   $.get('./data.json', 'json')
-//     .then(data => {
-//       data.forEach(item => {
-//         Dog.allDogs.push(new Dog(item));
-//       });
-//     })
-//     .then(Dog.loadDogs);
-// };
-
-// Dog.loadDogs = () => {
-//   Dog.allDogs.forEach(dog => dog.render());
-// };
-
-// $(() => Dog.readJson());
+    if(selected === 'default'){
+        $('div').show();
+    }
+})
