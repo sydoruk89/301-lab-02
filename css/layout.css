@@ -8,18 +8,18 @@ header {
 }
 
 .wrapper{
-  height: 87vh;
+  height: 91.5vh;
 }
 .wrapper::after {
   content: "";
   clear: both;
   display: table;
 }
+
 h1{
-  margin: 1rem;
-  font-size: 220%;
-}
-main {
+  font-family: 'Shojumaru', cursive;
+  font-size: 40px;
+  letter-spacing: .4rem;
   margin: 1rem;
 }
 

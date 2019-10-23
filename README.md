@@ -15,7 +15,7 @@ Finish time: 9:10 pm
 Actual time needed to complete: 1 hr 50 min
 
 Feature 3: Style the Application
-Estimate of time needed to complete: _____
-Start time: _____
-Finish time: _____
-Actual time needed to complete: _____
+Estimate of time needed to complete: 2 hrs
+Start time: 9:00 pm
+Finish time: 1:45 pm
+Actual time needed to complete: 2 hrs
