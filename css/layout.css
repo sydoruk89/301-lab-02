@@ -8,7 +8,7 @@ header {
 }
 
 .wrapper{
-  height: 87vh;
+  height: 91.5vh;
 }
 .wrapper::after {
   content: "";
